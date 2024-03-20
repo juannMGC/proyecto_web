@@ -35,6 +35,7 @@ class ProductsController extends Controller
         $product->stock = $request->product_stock;
         $product->save();
         return redirect()->route('products.index');
+        
     }
 
     /**
