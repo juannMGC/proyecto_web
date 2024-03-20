@@ -5,22 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
-
 <body>
-    {{$products}}
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($products as $product)
+            <tr>
+                <td>{{ $product->name }}</td>
+                <td>{{ $product->price }}</td>
+                <td>{{ $product->stock }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
     <form action="{{ route('products.store') }}" method="post">
         @csrf
-        <label>ingrese el nombre del producto:
-            <input type="text" name="product_name" placeholder="Ingrese el nombre del producto" >
+        <label>Ingrese el nombre del producto:
+            <input type="text" name="product_name" placeholder="Ingrese el nombre del producto">
         </label>
 
-        <label>ingrese el precio del producto:
-            <input step="0.5" type="number" name="product_price" placeholder="Ingrese el precio del producto" >
+        <label>Ingrese el precio del producto:
+            <input step="0.5" type="number" name="product_price" placeholder="Ingrese el precio del producto">
         </label>
 
-        <label>ingrese la cantidad de unidades del producto:
-            <input type="number" name="product_stock" placeholder="Ingrese el stock del producto" >
+        <label>Ingrese la cantidad de unidades del producto:
+            <input type="number" name="product_stock" placeholder="Ingrese el stock del producto">
         </label>
         <br>
         <button type="submit">Guardar</button>
